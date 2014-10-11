@@ -22,4 +22,9 @@ class Items extends \Eloquent
     }
 
 
+    public function requests()
+    {
+        return $this->hasMany('Request');
+    }
+
 }
