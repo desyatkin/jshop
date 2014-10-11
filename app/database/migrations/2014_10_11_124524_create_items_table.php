@@ -20,6 +20,7 @@ class CreateItemsTable extends Migration {
 		      type_id bigint NOT NULL REFERENCES item_types (id),
 		      tracker VARCHAR (255),
 		      name VARCHAR (255) NOT NULL,
+		      unit VARCHAR (255),
 		      money DECIMAL (10, 2) DEFAULT 0,
 		      description text NOT NULL,
 		      status_id bigint NOT NULL DEFAULT 1 REFERENCES item_statuses (id),

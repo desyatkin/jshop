@@ -20,7 +20,14 @@ class ItemsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('items.create');
+        $types = ItemTypes::all();
+        $params = Params::all();
+        $compares = ItemCompares::all();
+
+		return View::make('items.create')
+                    ->with('params', $params)
+                    ->with('compares', $compares)
+                    ->with('types', $types);
 	}
 
 
