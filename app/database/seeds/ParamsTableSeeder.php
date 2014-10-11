@@ -8,20 +8,20 @@ class ParamTableSeeder extends Seeder {
         Params::create([
             'id' => 1,
             'name' => 'Стоимость',
-            'index' => ''
+            'unit' => 'руб.'
         ]);
 
         Params::create([
             'id' => 2,
             'name' => 'Вес',
-            'index' => ''
+            'unit' => 'кг'
         ]);
 
 
         Params::create([
             'id' => 4,
             'name' => 'Количество',
-            'index' => ''
+            'unit' => 'шт.'
         ]);
 
 	}

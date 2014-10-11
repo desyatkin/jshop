@@ -5,6 +5,7 @@
     <h1>Регистрация</h1>
 
     @include('layouts.partials.errors')
+    @include('flash::message')
 
     <br><br>
 
