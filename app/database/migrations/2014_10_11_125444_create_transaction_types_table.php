@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCityTable extends Migration {
+class CreateTransactionTypesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCityTable extends Migration {
 	public function up()
 	{
         DB::statement("
-            CREATE TABLE IF NOT EXISTS city (
+            CREATE TABLE IF NOT EXISTS transaction_types (
                 id serial NOT NULL,
                 name varchar(255) NOT NULL,
-                CONSTRAINT city_pkey PRIMARY KEY (id)
+                CONSTRAINT transaction_types_pkey PRIMARY KEY (id)
             );
         ");
 	}
@@ -29,7 +29,7 @@ class CreateCityTable extends Migration {
 	public function down()
 	{
         DB::statement("
-		    DROP TABLE city CASCADE ;
+		    DROP TABLE transaction_types CASCADE ;
 		");
 	}
 
