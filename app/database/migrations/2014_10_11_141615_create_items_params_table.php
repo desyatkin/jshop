@@ -18,6 +18,7 @@ class CreateItemsParamsTable extends Migration {
 		      item_id bigint NOT NULL REFERENCES items (id),
 		      param_id bigint NOT NULL REFERENCES param (id),
 		      compare_id bigint NOT NULL REFERENCES item_compares (id),
+		      is_requier boolean NOT NULL DEFAULT FALSE,
 		      CONSTRAINT items_params_pkey PRIMARY KEY (id)
 		    );
 		");
