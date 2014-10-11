@@ -22,6 +22,7 @@ class CreateItemsTable extends Migration {
 		      money DECIMAL (10, 2) DEFAULT 0,
 		      description text NOT NULL,
 		      status_id bigint NOT NULL DEFAULT 1 REFERENCES item_statuses (id),
+		      relevance_date TIMESTAMP without time zone NOT NULL DEFAULT NOW(),
 		      end_date TIMESTAMP without time zone NOT NULL DEFAULT NOW(),
 		      created_at TIMESTAMP without time zone NOT NULL DEFAULT NOW(),
 		      updated_at TIMESTAMP without time zone NOT NULL DEFAULT NOW(),

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UsersTableSeeder');
 		$this->call('ItemCompareTableSeeder');
 		$this->call('ItemStatusesTableSeeder');
+		$this->call('ParamTableSeeder');
 	}
 
 }

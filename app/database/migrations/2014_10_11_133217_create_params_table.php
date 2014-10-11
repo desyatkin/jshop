@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateParamTable extends Migration {
+class CreateParamsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,13 +13,12 @@ class CreateParamTable extends Migration {
 	public function up()
 	{
 		DB::statement("
-		    CREATE TABLE param(
+		    CREATE TABLE params(
               id bigserial NOT NULL,
               name VARCHAR (255) NOT NULL,
               index VARCHAR (255) NOT NULL,
               description text,
-              value VARCHAR (255) NOT NULL,
-              CONSTRAINT param_pkey PRIMARY KEY (id)
+              CONSTRAINT params_pkey PRIMARY KEY (id)
             );
 		");
 	}
@@ -32,7 +31,7 @@ class CreateParamTable extends Migration {
 	public function down()
 	{
 		DB::statement("
-		    DROP TABLE param CASCADE;
+		    DROP TABLE if EXISTS params CASCADE;
 		");
 	}
 

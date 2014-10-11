@@ -16,9 +16,10 @@ class CreateItemsParamsTable extends Migration {
 		    CREATE TABLE items_params(
 		      id bigserial NOT NULL,
 		      item_id bigint NOT NULL REFERENCES items (id),
-		      param_id bigint NOT NULL REFERENCES param (id),
+		      param_id bigint NOT NULL REFERENCES params (id),
 		      compare_id bigint NOT NULL REFERENCES item_compares (id),
 		      is_requier boolean NOT NULL DEFAULT FALSE,
+              value VARCHAR (255) NOT NULL,
 		      CONSTRAINT items_params_pkey PRIMARY KEY (id)
 		    );
 		");
