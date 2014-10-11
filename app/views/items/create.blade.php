@@ -54,10 +54,19 @@
         </span>
 
 
+        {{-- Описание --}}
+        <div class="form-group">
+            <label for="description" class="control-label col-md-3">Описание:</label>
+
+            <div class="col-md-9">
+                <textarea class="form-control" name="description" placeholder="Описание" id="description">{{ Input::old('description') }}</textarea>
+            </div>
+        </div>
+
         {{-- Все что относится к составному типу --}}
         <span id="item_type_id_2" {{-- style="display: none;" --}}>
             {{-- params --}}
-            <div class="form-group" id="params">
+            <div class="form-group">
                 <label for="params" class="control-label col-md-3">
                     <a href="#" class="btn btn-info" onclick="addParamRow(); return false;">
                         <span class="glyphicon glyphicon-plus"></span>
@@ -65,8 +74,8 @@
                     Параметры:
                 </label>
             
-                <div class="col-md-9 param_row">
-                    <div class="form-inline">
+                <div class="col-md-9 param_row" id="body_item_params">
+                    <div class="form-inline"  style="margin-bottom: 15px;">
                         <select name="param_name[]" id="params" class="form-control">
                             @foreach($params as $param)
                                 <option value="{{ $param->id }}">{{ $param->name }}</option>
@@ -83,14 +92,6 @@
             </div>
         </span>
 
-        {{-- Описание --}}
-        <div class="form-group">
-            <label for="description" class="control-label col-md-3">Описание:</label>
-
-            <div class="col-md-9">
-                <textarea class="form-control" name="description" placeholder="Описание" id="description">{{ Input::old('description') }}</textarea>
-            </div>
-        </div>
 
 
     {{ Form::close() }}

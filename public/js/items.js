@@ -6,7 +6,7 @@ function changeItemType(type_id)
 
 function addParamRow()
 {
-    var row = $('.param_row:first').html();
-    $('#params').append(row);
+    var row = $('#body_item_params div:first').html();
+    $('#body_item_params').append('<div class="form-inline" style="margin-bottom: 15px;">' + row + '</div>');
 
 }
