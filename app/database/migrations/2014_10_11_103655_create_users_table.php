@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration {
               email VARCHAR (255) NOT NULL,
               password VARCHAR (255) NOT NULL,
               remember_token VARCHAR (100),
+              money decimal(10,2),
               created_at timestamp without time zone NOT NULL DEFAULT NOW(),
               updated_at timestamp without time zone NOT NULL DEFAULT NOW(),
               CONSTRAINT users_pkey PRIMARY KEY (id)
