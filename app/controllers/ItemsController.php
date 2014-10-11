@@ -68,6 +68,34 @@ class ItemsController extends \BaseController {
         $item->unit        = Input::get('unit');
         $item->save();
 
+
+        if(Input::hasFile('files')) {
+            $files = Input::file('files');
+            $rules = array(
+                'image' => 'image'
+            );
+            foreach($files as $file) {
+                $input = array('image' => $file );
+                $validator = Validator::make($input, $rules);
+                /* @var $file Symfony\Component\HttpFoundation\File\UploadedFile */
+                if (!$validator->fails())
+                {
+                    $newFileName = md5(time()). '.' . $file->getClientOriginalExtension();
+                    $pic = Pictures::create([
+                        'name' => $file->getClientOriginalName(),
+                        'path' => $newFileName,
+                    ]);
+
+                    $file->move(Config::get('app.upload_img_dir'), $newFileName);
+
+                    ItemPictures::create([
+                        'item_id' => $item->id,
+                        'picture_id' => $pic->id
+                    ]);
+                }
+            }
+        }
+
         switch ($item_type_id) {
             // Количественная
             case 1:

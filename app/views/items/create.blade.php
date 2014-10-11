@@ -8,7 +8,7 @@
 
     <br><br>
 
-    {{ Form::open(['url' => '/items', 'method' => 'POST', 'class' => 'form-horizontal']) }}
+    {{ Form::open(['url' => '/items', 'method' => 'POST', 'class' => 'form-horizontal', 'files' => true]) }}
 
         {{-- Название --}}
         <div class="form-group">
@@ -44,6 +44,24 @@
             </div>
         </div>
 
+        {{-- Описание --}}
+        <div class="form-group">
+            <label for="description" class="control-label col-md-3">Описание:</label>
+
+            <div class="col-md-9">
+                <textarea class="form-control" name="description" placeholder="Описание" id="description">{{ Input::old('description') }}</textarea>
+            </div>
+        </div>
+
+        {{-- Файлы --}}
+        <div class="form-group">
+            <label for="description" class="control-label col-md-3">Файлы:</label>
+
+            <div class="col-md-9">
+                {{ Form::file('files[]', ['style' => 'border: 0px', 'multiple' => true]) }}
+            </div>
+        </div>
+
         {{-- Все что относится к количественному типу --}}
         <span id="item_type_id_1">
             {{-- Единица измерения --}}
@@ -70,16 +88,6 @@
                 </div>
             </div>
         </span>
-
-
-        {{-- Описание --}}
-        <div class="form-group">
-            <label for="description" class="control-label col-md-3">Описание:</label>
-
-            <div class="col-md-9">
-                <textarea class="form-control" name="description" placeholder="Описание" id="description">{{ Input::old('description') }}</textarea>
-            </div>
-        </div>
 
         {{-- Все что относится к составному типу --}}
         <span id="item_type_id_2"  style="display: none;">

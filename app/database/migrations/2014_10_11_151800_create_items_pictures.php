@@ -16,7 +16,7 @@ class CreateItemsPictures extends Migration {
 		    CREATE TABLE item_pictures(
 		      item_id bigint NOT NULL REFERENCES items(id),
               picture_id bigint NOT NULL REFERENCES pictures(id),
-              CONSTRAINT item_pictures_pkey PRIMARY KEY (item_id)
+              CONSTRAINT item_pictures_pkey PRIMARY KEY (item_id, picture_id)
 		    );
 		");
 	}
