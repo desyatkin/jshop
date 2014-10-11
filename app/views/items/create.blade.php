@@ -3,6 +3,11 @@
 @section('content')
     <h1>Создать покупку</h1>
 
+    @include('layouts.partials.errors')
+    @include('flash::message')
+
+    <br><br>
+
     {{ Form::open(['url' => '/items', 'method' => 'POST', 'class' => 'form-horizontal']) }}
 
         {{-- Название --}}
@@ -10,6 +15,19 @@
             <label for="name" class="control-label col-md-3">Название:</label>
             <div class="col-md-9">
                 <input type="text" class="form-control" name="name" id="name" placeholder="Название" value="{{ Input::old('name') }}">
+            </div>
+        </div>
+
+        {{-- Город --}}
+        <div class="form-group">
+            <label for="city" class="control-label col-md-3">Город:</label>
+
+            <div class="col-md-9">
+                <select name="city" id="city" class="form-control">
+                    @foreach($cities as $city)
+                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
 
@@ -32,7 +50,7 @@
             <div class="form-group">
                 <label for="unit" class="control-label col-md-3">Единица измерения:</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" name="unit" id="unit" placeholder="Единица измерения" value="{{ Input::old('unit') }}">
+                    <input type="text" class="form-control" name="unit" id="unit" placeholder="Единица измерения" value="{{ Input::old('unit') }}" onkeyup="updateCostUnitField(this.value);">
                 </div>
             </div>
 
@@ -46,7 +64,7 @@
 
             {{-- Стоимость --}}
             <div class="form-group">
-                <label for="cost_unit" class="control-label col-md-3">Стоимость:</label>
+                <label for="cost_unit" id="cost_unit_label" class="control-label col-md-3">Стоимость:</label>
                 <div class="col-md-9">
                     <input type="text" class="form-control" name="cost_unit" id="cost_unit" placeholder="Стоимость" value="{{ Input::old('cost_unit') }}">
                 </div>
@@ -64,7 +82,7 @@
         </div>
 
         {{-- Все что относится к составному типу --}}
-        <span id="item_type_id_2" {{-- style="display: none;" --}}>
+        <span id="item_type_id_2"  style="display: none;">
             {{-- params --}}
             <div class="form-group">
                 <label for="params" class="control-label col-md-3">
@@ -78,7 +96,7 @@
                     <div class="form-inline"  style="margin-bottom: 15px;">
                         <select name="param_name[]" id="params" class="form-control">
                             @foreach($params as $param)
-                                <option value="{{ $param->id }}">{{ $param->name }}</option>
+                                <option value="{{ $param->id }}">{{ $param->name }} ({{ $param->unit }})</option>
                             @endforeach
                         </select>
                         <select name="compare[]" id="params" class="form-control">
@@ -92,7 +110,13 @@
             </div>
         </span>
 
-
+    {{-- submit --}}
+    <div class="form-group">
+        <label for="" class="control-label col-md-3"></label>
+        <div class="col-md-9">
+            <input type="submit" class="btn btn-primary" value="Добавить">
+        </div>
+    </div>
 
     {{ Form::close() }}
 @stop
