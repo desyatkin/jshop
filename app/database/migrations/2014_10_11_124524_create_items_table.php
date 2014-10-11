@@ -17,6 +17,7 @@ class CreateItemsTable extends Migration {
 		      id bigserial NOT NULL,
 		      user_id bigint NOT NULL REFERENCES users (id),
 		      city_id bigint NOT NULL REFERENCES city (id),
+		      type_id bigint NOT NULL REFERENCES item_types (id),
 		      tracker VARCHAR (255),
 		      name VARCHAR (255) NOT NULL,
 		      money DECIMAL (10, 2) DEFAULT 0,
