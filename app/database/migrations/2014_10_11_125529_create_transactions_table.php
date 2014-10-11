@@ -16,6 +16,7 @@ class CreateTransactionsTable extends Migration {
             CREATE TABLE IF NOT EXISTS transactions (
                 id bigserial NOT NULL,
                 user_id bigint DEFAULT 0,
+                to_user_id bigint DEFAULT 0,
                 item_id bigint DEFAULT 0,
                 type_id int NOT NULL REFERENCES transaction_types(id),
                 value decimal(10,2) NOT NULL,
@@ -25,6 +26,7 @@ class CreateTransactionsTable extends Migration {
         ");
 
         DB::statement("CREATE INDEX transactions_user_id_idx ON transactions(user_id)");
+        DB::statement("CREATE INDEX transactions_to_user_id_idx ON transactions(to_user_id)");
         DB::statement("CREATE INDEX transactions_itesm_id_idx ON transactions(item_id)");
 	}
 
