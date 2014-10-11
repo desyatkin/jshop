@@ -20,7 +20,7 @@ class CreateTransactionsTable extends Migration {
                 type_id int NOT NULL REFERENCES transaction_types(id),
                 value decimal(10,2) NOT NULL,
                 created_at timestamp without time zone NOT NULL DEFAULT NOW(),
-                CONSTRAINT city_pkey PRIMARY KEY (id)
+                CONSTRAINT transactions_pkey PRIMARY KEY (id)
             );
         ");
 
