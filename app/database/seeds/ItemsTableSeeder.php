@@ -123,12 +123,19 @@ class ItemsTableSeeder extends Seeder
                 'value'      => 20,
             ]);
 
-        ItemsParams::create([
-            'item_id'    => $item->id,
-            'param_id'   => 2,
-            'compare_id' => 2,
-            'value'      => 100,
-        ]);
+            ItemsParams::create([
+                'item_id'    => $item->id,
+                'param_id'   => 2,
+                'compare_id' => 2,
+                'value'      => 100,
+            ]);
+
+            ItemsParams::create([
+                'item_id'    => $item->id,
+                'param_id'   => 1,
+                'compare_id' => 2,
+                'value'      => 100000,
+            ]);
 
 
 
