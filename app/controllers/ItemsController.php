@@ -58,8 +58,14 @@ class ItemsController extends \BaseController {
 	 */
 	public function store()
 	{
-        $this->addItemForm->validate(Input::all());
-
+        try {
+            $this->addItemForm->validate(Input::all());
+        } catch(\Laracasts\Validation\FormValidationException $e) {
+            return Redirect::to('/items/create')
+                ->with(Input::all())
+                ->withErrors($e->getErrors())
+            ;
+        }
         $item_type_id = Input::get('item_type');
 
         $item              = new Items;
@@ -126,10 +132,10 @@ class ItemsController extends \BaseController {
                 $compares    = Input::get('compare');
                 $values      = Input::get('value');
 
-                foreach($param_names as $key => $param_name) {
+                foreach($param_names as $key => $paramId) {
                     ItemsParams::create([
                         'item_id' => $item->id,
-                        'param_id' => ItemsParams::find($param_name)->first()->id,
+                        'param_id' => $paramId,
                         'compare_id' => ItemCompares::find($compares[$key])->first()->id,
                         'value' => $values[$key]
                     ]);
@@ -140,8 +146,8 @@ class ItemsController extends \BaseController {
             default:
                 break;
         }
-
-        return Redirect::to('/items');
+        Flash::success('Покупка успешно создана!');
+        return Redirect::to('/items/'.$item->id);
 	}
 
 
@@ -158,8 +164,8 @@ class ItemsController extends \BaseController {
         switch($item->type_id){
             case 1:
                 $params = [
-                    'max_unit' => ItemsParams::where('item_id', $item->id)->where('param_id', 4)->where('compare_id', 2)->first()->value,
-                    'cost_unit' => ItemsParams::where('item_id', $item->id)->where('param_id', 1)->where('compare_id', 3)->first()->value
+                    'max_unit' => $item->countParam()->value,
+                    'cost_unit' => $item->costParam()->value
                 ];
                 break;
             case 2:
@@ -168,10 +174,12 @@ class ItemsController extends \BaseController {
             default:
                 break;
         }
-
+        $requests = ItemRequest::where('item_id', '=', $item->id)->get();
         return View::make('items.show')
                     ->with('params', $params)
-                    ->with('item', $item);
+                    ->with('item', $item)
+                    ->with('requests', $requests)
+        ;
 	}
 
 
