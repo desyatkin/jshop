@@ -37,4 +37,8 @@ class Items extends \Eloquent
         return $this->hasMany('ItemPictures', 'item_id');
     }
 
+    public function countParam()
+    {
+       return (ItemsParams::where('item_id', '=', $this->id)->where('param_id', '=', 4)->first());
+    }
 }
