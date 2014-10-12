@@ -24,6 +24,41 @@ class ItemRequestController extends \BaseController {
 	public function store()
 	{
 //        $this->addItemRequestForm->validate(Input::all());
+        $user = Auth::user();
+
+        $item_id = (int)Input::get('item_id', false);
+        $description = Input::get('description', '');
+        $item = Items::find($item_id);
+        if($item) {
+            switch($item->type_id) {
+                case 1:
+                    $number = (int)Input::get('number', false);
+                    if($number) {
+                        $summ = $number * $item->countParam()->value;
+                        if($user->money < $summ) {
+                            Flash::error('У вас не достаточно средст для покупки');
+                            return Redirect::to('/items/' . $item_id)->with(Input::all());
+                        } else {
+                            $request = ItemRequest::create([
+                                'description' => $description,
+                                'item_id' => $item_id,
+                                'money' => 0,
+                                'user_id' => $user->id,
+                                'status_id' => 1
+                            ]);
+                            $request->addParam(4, $number);
+                            $request->payItem($summ);
+                        }
+                    } else {
+                        Flash::error('Вы не выбрали нужное кол-во');
+                        return Redirect::to('/items/' . $item_id)->with(Input::all());
+                    }
+                break;
+                case 2:
+                    dd(Input::all());
+                    break;
+            }
+        }
 
 //        $item_type_id = Input::get('item_type');
 //
@@ -80,6 +115,6 @@ class ItemRequestController extends \BaseController {
 //            break;
 //        }
 
-        return Redirect::to('/items');
+        return Redirect::to('/items/' . $item_id);
 	}
 }

@@ -59,6 +59,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
                         ]);
 
                         $this->money = $this->money + $value;
+                        $this->save();
                     }
                 } else {
                     throw new \Exception('Нет такого пользователя');
@@ -72,7 +73,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface
                     'type_id'    => 1,
                     'value'      => $value
                 ]);
+                $this->save();
             }
+
             DB::commit();
         }catch (\Exception $e) {
             $result['errors'][] = $e->getMessage();

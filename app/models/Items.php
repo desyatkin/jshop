@@ -24,7 +24,7 @@ class Items extends \Eloquent
 
     public function requests()
     {
-        return $this->hasMany('Request');
+        return $this->hasMany('ItemRequest', 'item_id', 'id');
     }
 
     public function params()
@@ -40,5 +40,10 @@ class Items extends \Eloquent
     public function countParam()
     {
        return (ItemsParams::where('item_id', '=', $this->id)->where('param_id', '=', 4)->first());
+    }
+
+    public function costParam()
+    {
+        return (ItemsParams::where('item_id', '=', $this->id)->where('param_id', '=', 1)->where('compare_id', 3)->first());
     }
 }
