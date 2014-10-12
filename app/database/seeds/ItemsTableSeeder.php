@@ -44,7 +44,7 @@ class ItemsTableSeeder extends Seeder
             'item_id'    => $item->id,
             'param_id'   => 1,
             'compare_id' => 3,
-            'value'      => '25 000'
+            'value'      => '25000'
         ]);
 
         // Изображение
@@ -123,12 +123,19 @@ class ItemsTableSeeder extends Seeder
                 'value'      => 20,
             ]);
 
-        ItemsParams::create([
-            'item_id'    => $item->id,
-            'param_id'   => 2,
-            'compare_id' => 2,
-            'value'      => 100,
-        ]);
+            ItemsParams::create([
+                'item_id'    => $item->id,
+                'param_id'   => 2,
+                'compare_id' => 2,
+                'value'      => 100,
+            ]);
+
+            ItemsParams::create([
+                'item_id'    => $item->id,
+                'param_id'   => 1,
+                'compare_id' => 2,
+                'value'      => 100000,
+            ]);
 
 
 
