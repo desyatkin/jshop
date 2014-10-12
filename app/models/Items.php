@@ -27,4 +27,14 @@ class Items extends \Eloquent
         return $this->hasMany('Request');
     }
 
+    public function params()
+    {
+        return $this->hasMany('ItemsParams');
+    }
+
+    public function pictures()
+    {
+        return $this->hasMany('ItemPictures', 'item_id');
+    }
+
 }

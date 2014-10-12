@@ -24,7 +24,10 @@ class ItemsController extends \BaseController {
 	 */
 	public function index()
 	{
-        return View::make('items.index');
+        $items = Items::paginate(10);
+
+        return View::make('items.index')
+                    ->with('items', $items);
 	}
 
 
