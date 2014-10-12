@@ -63,19 +63,17 @@
                     @endforeach
 
                     <div class="form-group">
-                        <label for="description" class="control-label col-md-3">Описание:</label>
+                        <label for="description" class="control-label col-md-3">Комментарий:</label>
 
                         <div class="col-md-9">
-                            <textarea class="form-control" name="description" placeholder="Описание" id="description">{{ Input::old('description') }}</textarea>
+                            <textarea class="form-control" name="description" placeholder="Комментарий" id="description">{{ Input::old('description') }}</textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="button_cost" class="control-label col-md-3"></label>
                         <div class="col-md-9">
-                            <a href="" class="btn btn-success" id="button_cost_2" disabled="disabled">
-                                Заказать
-                            </a>
+                            <input type="submit" class="btn btn-success">
                         </div>
                     </div>
                 </div>

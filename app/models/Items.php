@@ -21,7 +21,6 @@ class Items extends \Eloquent
 
     }
 
-
     public function requests()
     {
         return $this->hasMany('ItemRequest', 'item_id', 'id');
