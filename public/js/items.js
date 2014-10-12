@@ -56,3 +56,6 @@ function changeCostButton(cost)
         $('#button_cost_2').html('Купить').attr('disabled', 'disabled');
     }
 }
+$( document ).ready(function() {
+    $('input[name=number]').trigger('onkeyup');
+});

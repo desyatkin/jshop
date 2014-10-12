@@ -12,26 +12,30 @@
 
     <div class="row">
         <div class="col-md-3">
-            <img src="/upload/img/@if(isset($item->pictures->first()->picture->path)){{ $item->pictures->first()->picture->path }}@endif">
+            @if(isset($item->pictures->first()->picture->path))<img  width=200 src="/upload/img/{{ $item->pictures->first()->picture->path }}">@endif
         </div>
         <div class="col-md-9">
             <p>
                 {{ $item->description }}
             </p>
-
+            {{ Form::open(['url' => '/item/request', 'method' => 'POST']) }}
             {{-- Количественная покупка --}}
-            @if($item->type_id === 1)
-
+            @if($item->type_id == 1)
+            <div class="well">
+                <h3>Ограничения:</h3><br/>
+                <b>Всего предметов:</b> {{ $item->countParam()->value }}<br/>
+                <b>Предмет:</b> {{ $item->unit }}<br/>
+                <b>Цена 1шт:</b> {{ $params['cost_unit'] }} р.<br/>
+            </div>
                 <div class="form-inline">
-                        <input type="text" class="form-control" name="number" style="width: 40px;" value="1" onkeyup="changeCost(this.value, {{ $params['cost_unit'] }})">
-                        {{ $item->unit }}
-                        <a href="" class="btn btn-success" id="button_cost">
-                            Купить за {{ $params['cost_unit'] }} руб.
-                        </a>
+                    <input type="text" class="form-control" name="number" style="width: 40px;" value="1" onkeyup="changeCost(this.value, {{ $params['cost_unit'] }})">
+                    {{ $item->unit }}
+                    <button href="" class="btn btn-success" id="button_cost">
+                        Купить за {{ $params['cost_unit'] }} руб.
+                    </button>
                 </div>
-
             {{-- Состовная покупка --}}
-            @elseif($item->type_id === 2)
+            @elseif($item->type_id == 2)
                 <div class="form-horizontal">
                     @foreach($params as $param)
                         @if($param->param->id !== 1)
@@ -61,8 +65,8 @@
                         </div>
                     </div>
                 </div>
-
             @endif
+            {{ Form::close() }}
         </div>
     </div>
 @stop
