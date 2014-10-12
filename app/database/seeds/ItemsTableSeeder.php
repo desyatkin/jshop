@@ -44,7 +44,7 @@ class ItemsTableSeeder extends Seeder
             'item_id'    => $item->id,
             'param_id'   => 1,
             'compare_id' => 3,
-            'value'      => '25 000'
+            'value'      => '25000'
         ]);
 
         // Изображение
