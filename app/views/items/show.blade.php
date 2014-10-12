@@ -47,7 +47,7 @@
             <h3>Ваш заказ</h3>
             @include('layouts.partials.errors')
                 <div class="form-horizontal">
-                    @foreach($item->params as $param)
+                    @foreach($params as $param)
                         <div class="form-group">
                             <label for="id_{{ $param->param->index }}" class="control-label col-md-3">{{ $param->param->name }}:</label>
                             <div class="col-md-9">
