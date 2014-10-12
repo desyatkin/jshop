@@ -12,6 +12,18 @@ class YandexMoneyController extends \BaseController {
 	{
 		$secret = 's5hV95c8DwvjcaWvN9rbc4vM';
 
+        $notification_type = Input::get('notification_type', '');
+        $operation_id = Input::get('operation_id', '');
+        $amount = Input::get('amount', '');
+        $currency = Input::get('currency', '');
+        $datetime = Input::get('datetime', '');
+        $sender = Input::get('sender', '');
+        $codepro = Input::get('codepro', '');
+        $label = Input::get('label', '');
+        $sha = sha1("$notification_type&$operation_id&$amount&$currency&$datetime&$sender&$codepro&$secret&$label");
+
         Log::error(Input::all());
+        Log::error($sha);
+        Log::error($sha==Input::get('sha1_hash', ''));
 	}
 }
