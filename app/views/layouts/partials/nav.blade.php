@@ -18,6 +18,12 @@ font-family: 'Ubuntu', sans-serif;
         <li class="active">
             <a href="/items">Покупки</a>
         </li>
+        <li>
+        <a href="/items/create" >
+                <span class="glyphicon glyphicon-plus"></span>
+                Создать покупку
+            </a>
+        </li>
 
       </ul>
 

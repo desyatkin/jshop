@@ -1,7 +1,8 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>{{ $item->name }}</h1>
+<br>
+    <h1><span class="glyphicon glyphicon-thumbs-up"></span> {{ $item->name }}</h1>
 
     <ol class="breadcrumb">
       <li><a href="/items/">Покупки</a></li>
