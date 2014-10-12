@@ -1,39 +1,24 @@
 @extends('layouts.default')
 
-@section('content')
+@section('css')
+    <link rel="stylesheet" href="/css/signin.css" />
+@stop
 
-    <h1>Авторизация</h1>
+@section('content')
 
     @include('layouts.partials.errors')
     @include('flash::message')
 
     <br><br>
 
-    {{ Form::open(['url' => '/signin', 'method' => 'POST', 'class' => 'form-horizontal']) }}
+    {{ Form::open(['url' => '/signin', 'method' => 'POST', 'class' => 'form-signin']) }}
 
-        {{-- email --}}
-        <div class="form-group">
-            <label for="email" class="control-label col-md-3">Почта:</label>
-            <div class="col-md-9">
-                <input type="text" class="form-control" name="email" id="email" placeholder="email@example.com" value="{{ Input::old('email') }}">
-            </div>
-        </div>
+        <h2 class="form-signin-heading">Авторизация</h2>
 
-        {{-- password --}}
-        <div class="form-group">
-            <label for="password" class="control-label col-md-3">Пароль:</label>
-            <div class="col-md-9">
-                <input type="password" class="form-control" placeholder="Пароль" name="password" id="password" value="{{ Input::old('password') }}">
-            </div>
-        </div>
+        <input name="email" type="email" class="form-control" placeholder="Email address" value="{{ Input::old('email') }}" required autofocus>
+        <input name="password" type="password" class="form-control" placeholder="Password" value="{{ Input::old('password') }}" required>
 
-        {{-- submit --}}
-        <div class="form-group">
-            <label for="" class="control-label col-md-3"></label>
-            <div class="col-md-9">
-                <input type="submit" value="Войти" class="btn btn-primary">
-            </div>
-        </div>
+        <input type="submit" value="Войти" class="btn btn-lg btn-success btn-block">
     {{ Form::close() }}
 
 @stop

@@ -1,6 +1,11 @@
 <?php
 
-Route::get('/', 'HomeController@index');
+
+if(Auth::check()) {
+    Route::get('/', function () {
+            return Redirect::to('/items');
+    });
+} else Route::get('/', 'HomeController@index');
 
 /**
  * Регистрация
