@@ -1,4 +1,6 @@
 <?php
+use YandexMoney\API;
+use YandexMoney\BaseAPI;
 
 class CabinetController extends \BaseController {
 
@@ -19,7 +21,7 @@ class CabinetController extends \BaseController {
 	 */
 	public function edit()
 	{
-        return View::make('cabinet.index');
+        return View::make('cabinet.edit');
 	}
 
 
@@ -31,13 +33,17 @@ class CabinetController extends \BaseController {
 	 */
 	public function update()
 	{
-
-
 		return Redirect::to('/cabinet/');
 	}
 
+    /**
+     * Пополнение баланса
+     * @return \Illuminate\View\View
+     */
     public function payment()
     {
-
+        return View::make('cabinet.payment', [
+            'user'=> Auth::user(),
+        ]);
     }
 }
