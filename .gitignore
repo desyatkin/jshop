@@ -9,4 +9,3 @@ Thumbs.db
 .idea
 _ide_helper.php
 app/config/localapp/config/database.php
-/public/upload/img/*

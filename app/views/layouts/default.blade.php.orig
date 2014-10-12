@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <title>Joint Shop</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+<<<<<<< HEAD
     <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     @yield('css')
+=======
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+>>>>>>> e626a8133168379c07d518afc92659d7cfac6307
 </head>
 <body>
     @include('layouts.partials.nav')
@@ -21,9 +26,15 @@
     </div>
 
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<<<<<<< HEAD
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script>@yield('javascript')</script>
     @yield('scripts')
+
+=======
+    @yield('javascript')
+    @yield('scripts')
+>>>>>>> e626a8133168379c07d518afc92659d7cfac6307
 </body>
 </html>
