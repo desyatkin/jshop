@@ -19,13 +19,13 @@
                     <div style="margin: 0 20px 40px 20px; height: 130px;">
                         <h3>
                             <a href="/items/{{ $item->id }}">{{ $item->name }}</a>
-                            <a href="#" class="btn btn-success pull-right" role="button">Присоединиться</a>
+                            <a href="/items/{{ $item->id }}" class="btn btn-success pull-right" role="button">Присоединиться</a>
                         </h3>
                         <br>
                         <p>{{ $item->description }}</p>
                     </div>
                     <a href="/items/{{ $item->id }}">
-                        <img src="/upload/img/{{ $item->pictures->first()->picture->path }}" alt="">
+                        <img src="/upload/img/@if(isset($item->pictures->first()->picture->path)){{ $item->pictures->first()->picture->path }}@endif" alt="">
                     </a>
 
                 </div>

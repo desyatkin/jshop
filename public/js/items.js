@@ -42,5 +42,17 @@ function updateCostUnitField(unit)
  */
 function changeCost(number, cost)
 {
-    $('#button_cost').html('Купить за ' + (number * cost).toFixed(2));
+    $('#button_cost').html('Купить за ' + (number * cost).toFixed(2) + ' руб.');
+}
+
+
+function changeCostButton(cost)
+{
+    if(cost > 0) {
+        $('#button_cost_2').html('Купить за ' + cost + ' руб.').removeAttr('disabled');
+    }
+    else
+    {
+        $('#button_cost_2').html('Купить').attr('disabled', 'disabled');
+    }
 }

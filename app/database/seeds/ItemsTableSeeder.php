@@ -7,10 +7,12 @@ class ItemsTableSeeder extends Seeder
 {
 
     public function run() {
-        $faker  = Faker::create();
-        $users  = User::all()->toArray();
-        $cities = City::all()->toArray();
-        $units  = ['мм', 'мл', 'штука', 'кг', 'каюта', 'человек'];
+        $faker    = Faker::create();
+        $users    = User::all()->toArray();
+        $cities   = City::all()->toArray();
+        $units    = ['мм', 'мл', 'штука', 'кг', 'каюта', 'человек'];
+        $params   = Params::all()->toArray();
+        $compares = ItemCompares::all()->toArray();
 
         foreach (range(1, 54) as $index) {
             //------------------------------------------------------------------------------
@@ -68,21 +70,17 @@ class ItemsTableSeeder extends Seeder
                 'description' => $faker->paragraph(),
             ]);
 
-            // Максимальное количество
-            ItemsParams::create([
-                'item_id'    => $item->id,
-                'param_id'   => 4,
-                'compare_id' => 2,
-                'value'      => $faker->numberBetween(1, 20),
-            ]);
 
-            // Стоимость
-            ItemsParams::create([
-                'item_id'    => $item->id,
-                'param_id'   => 1,
-                'compare_id' => 3,
-                'value'      => $faker->randomFloat(2, 0)
-            ]);
+            // генерим разное количество параметров
+            for($i=0; $i < rand(1, count($params)); $i++) {
+                ItemsParams::create([
+                    'item_id'    => $item->id,
+                    'param_id'   => $params[$i]['id'],
+                    'compare_id' => $compares[array_rand($compares)]['id'],
+                    'value'      => $faker->numberBetween(10, 100),
+                ]);
+            }
+
 
             // Изображение
             $picture = Pictures::create([

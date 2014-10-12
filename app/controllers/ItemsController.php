@@ -163,8 +163,7 @@ class ItemsController extends \BaseController {
                 ];
                 break;
             case 2:
-                $params = ItemsParams::where('item_id', $item->id)->distinct('param_id')->get();
-                dd($params);
+                $params = ItemsParams::where('item_id', $item->id)->select('param_id')->groupBy('param_id')->get();
                 break;
             default:
                 break;
