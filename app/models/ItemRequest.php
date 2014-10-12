@@ -43,6 +43,11 @@ class ItemRequest extends \Eloquent
         return $this->belongsTo('User', 'user_id');
     }
 
+    public function params()
+    {
+        return $this->hasMany('RequestParams', 'request_id');
+    }
+
     public function countParams()
     {
         return (RequestParams::where('request_id', '=', $this->id)->where('param_id', '=', 4)->first());

@@ -55,7 +55,29 @@ class ItemRequestController extends \BaseController {
                     }
                 break;
                 case 2:
-                    dd(Input::all());
+                    $params = Input::get('params', []);
+                    if($params && isset($params[1])) {
+                        $summ = (float)$params[1];
+                        if($user->money < $summ) {
+                            Flash::error('У вас не достаточно средст для покупки');
+                            return Redirect::to('/items/' . $item_id)->with(Input::all());
+                        } else {
+                            $request = ItemRequest::create([
+                                'description' => $description,
+                                'item_id' => $item_id,
+                                'money' => 0,
+                                'user_id' => $user->id,
+                                'status_id' => 1
+                            ]);
+                            foreach ($params as $paramId => $value) {
+                                $request->addParam($paramId, $value);
+                            }
+                            $request->payItem($summ);
+                        }
+                    } else {
+                        Flash::error('Вы не заполнили все поля');
+                        return Redirect::to('/items/' . $item_id)->with(Input::all());
+                    }
                     break;
             }
         }
