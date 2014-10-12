@@ -36,15 +36,20 @@ class SignupController extends \BaseController {
 	 */
 	public function store()
 	{
-		$this->signupForm->validate(Input::all());
+        try {
+            $this->signupForm->validate(Input::all());
 
-        $user = User::create([
-                'email' => Input::get('email'),
+            $user = User::create([
+                'email'    => Input::get('email'),
                 'password' => Hash::make(Input::get('password'))
-        ]);
+            ]);
 
-        Auth::login($user);
-
+            Auth::login($user);
+        } catch(\Laracasts\Validation\FormValidationException $e) {
+            return Redirect::to('/')
+                ->with(Input::all())
+                ->withErrors($e->getErrors());
+        }
         return Redirect::to('/');
 	}
 

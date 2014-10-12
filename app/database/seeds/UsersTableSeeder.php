@@ -9,7 +9,6 @@ class UsersTableSeeder extends Seeder {
 		$faker = Faker::create();
 
         User::create([
-            'id' => 1,
             'email' => 'k.desyatkin@404-group.com',
             'password' => Hash::make('kleopatra')
         ]);
@@ -17,7 +16,6 @@ class UsersTableSeeder extends Seeder {
 		foreach(range(2, 100) as $index)
 		{
 			User::create([
-                'id' => $index,
                 'email' => $faker->unique()->email,
                 'password' => Hash::make('password')
 			]);
