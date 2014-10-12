@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <label for="button_cost" class="control-label col-md-3"></label>
                         <div class="col-md-9">
-                            <input type="submit" class="btn btn-success">
+                            <input type="submit" value="Купить" class="btn btn-success">
                         </div>
                     </div>
                 </div>
