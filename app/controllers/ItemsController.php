@@ -24,7 +24,7 @@ class ItemsController extends \BaseController {
 	 */
 	public function index()
 	{
-        $items = Items::paginate(10);
+        $items = Items::paginate(9);
 
         return View::make('items.index')
                     ->with('items', $items);
@@ -146,14 +146,33 @@ class ItemsController extends \BaseController {
 
 
 	/**
-	 * Display the specified resource.
+	 * Показываем покупку
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		//
+		$item = Items::find($id);
+
+        switch($item->type_id){
+            case 1:
+                $params = [
+                    'max_unit' => ItemsParams::where('item_id', $item->id)->where('param_id', 4)->where('compare_id', 2)->first()->value,
+                    'cost_unit' => ItemsParams::where('item_id', $item->id)->where('param_id', 1)->where('compare_id', 3)->first()->value
+                ];
+                break;
+            case 2:
+                $params = ItemsParams::where('item_id', $item->id)->distinct('param_id')->get();
+                dd($params);
+                break;
+            default:
+                break;
+        }
+
+        return View::make('items.show')
+                    ->with('params', $params)
+                    ->with('item', $item);
 	}
 
 

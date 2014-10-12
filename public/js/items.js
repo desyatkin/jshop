@@ -32,3 +32,15 @@ function updateCostUnitField(unit)
     $('#cost_unit_label').html('Стоимость ' + unit + ' :');
     $('#cost_unit').attr('placeholder', 'Стоимость ' + unit + '')
 }
+
+
+/**
+ * Меняем стоимость на кнопке в зависимости от количества
+ *
+ * @param number
+ * @param cost
+ */
+function changeCost(number, cost)
+{
+    $('#button_cost').html('Купить за ' + (number * cost).toFixed(2));
+}

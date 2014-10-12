@@ -29,7 +29,7 @@ class Items extends \Eloquent
 
     public function params()
     {
-        return $this->hasMany('ItemsParams');
+        return $this->hasMany('ItemsParams', 'item_id');
     }
 
     public function pictures()
