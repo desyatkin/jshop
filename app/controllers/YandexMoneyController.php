@@ -26,6 +26,7 @@ class YandexMoneyController extends \BaseController {
             $user = User::find((int)$label);
             if($user) {
                 $user->money = $user->money + $amount;
+                $user->save();
             }
         }
 
