@@ -1,11 +1,11 @@
 @extends('layouts.default')
 
 @section('content')
-
-    <h1>Личный кабинет  / Пополнение счёта - {{$user->id}}</h1>
+    <br>
+    <h1>Пополнение счёта</h1>
 
     <div class="well">
-        <b>Ваш счёт:</b> {{ number_format($user->money, 2, ',', ' ') }} р.s
+        <b>Ваш счёт:</b> {{ number_format($user->money, 2, ',', ' ') }} руб.
     </div>
 
     @include('cabinet.partials.form')

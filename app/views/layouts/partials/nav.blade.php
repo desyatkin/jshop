@@ -21,22 +21,31 @@ font-family: 'Ubuntu', sans-serif;
 
       </ul>
 
+
       <ul class="nav navbar-nav navbar-right">
               @if(Auth::check())
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->email }} <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span>
+                        {{ Auth::user()->email }}
+                        <span class="caret"></span>
+                        </a>
                     <ul class="dropdown-menu" role="menu">
+                      <li><a href="/cabinet/payment">Кабинет</a></li>
                       <li><a href="/logout">Выйти</a></li>
                     </ul>
                   </li>
+                  <li><a href="/cabinet/payment">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                                  {{ number_format(Auth::user()->money, 2, ',', ' ') }} руб.
+
+                                </a></li>
               @else
                   <li><a href="/signup">Регистрация</a></li>
                   <li><a href="/signin">Войти</a></li>
               @endif
 
-
-
-            </ul>
+      </ul>
 
 
 
