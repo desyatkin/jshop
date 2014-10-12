@@ -12,13 +12,13 @@
 
     <div class="row">
         <div class="col-md-3">
-            @if(isset($item->pictures->first()->picture->path))<img src="/upload/img/{{ $item->pictures->first()->picture->path }}">@endif
+            @if(isset($item->pictures->first()->picture->path))<img  width=200 src="/upload/img/{{ $item->pictures->first()->picture->path }}">@endif
         </div>
         <div class="col-md-9">
             <p>
                 {{ $item->description }}
             </p>
-            {{ Form::open([]) }}
+            {{ Form::open(['url' => '/item/request', 'method' => 'POST']) }}
             {{-- Количественная покупка --}}
             @if($item->type_id == 1)
             <div class="well">

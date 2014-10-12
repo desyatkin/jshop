@@ -26,6 +26,8 @@ Route::group(['before' => 'auth'], function(){
      */
     Route::resource('items', 'ItemsController');
 
+    Route::post('item/request', 'ItemRequestController@store');
+
     /**
      * Личный кабинет
      */
