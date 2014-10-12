@@ -23,7 +23,7 @@ class YandexMoneyController extends \BaseController {
         $sha = sha1("$notification_type&$operation_id&$amount&$currency&$datetime&$sender&$codepro&$secret&$label");
 
         if( $sha == Input::get('sha1_hash', '') ) {
-            $user = User::find($label);
+            $user = User::find((int)$label);
             if($user) {
                 $user->money = $user->money + $amount;
             }
