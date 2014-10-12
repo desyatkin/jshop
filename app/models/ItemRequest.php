@@ -32,15 +32,19 @@ class ItemRequest extends \Eloquent
 
     public function addParam($param_id, $value)
     {
-        RequestParams::create([
-            'request_id' => $this->id,
-            'param_id'   => $param_id,
-            'value'      => $value
-        ]);
+        DB::insert('INSERT INTO request_params(request_id, param_id, value) VALUES (:request_id, :param_id, :value)'
+        ,['request_id' => $this->id,
+          'param_id'   => $param_id,
+          'value'      => $value]);
     }
 
     public function user()
     {
         return $this->belongsTo('User', 'user_id');
+    }
+
+    public function countParams()
+    {
+        return (RequestParams::where('request_id', '=', $this->id)->where('param_id', '=', 4)->first());
     }
 }

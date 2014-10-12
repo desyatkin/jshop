@@ -35,7 +35,7 @@
                     <textarea style="width: 100%; margin-bottom: 10px;" class="form-control" name="description" placeholder="Комментарий" id="description">{{ Input::old('description') }}</textarea>
                 </div>
                 <div class="form-group form-inline">
-                    <input type="text" class="form-control" name="number" style="width: 40px;" value="1" onkeyup="changeCost(this.value, {{ $params['cost_unit'] }})">
+                    <input type="text" class="form-control" name="number" style="width: 100px;" value="1" onkeyup="changeCost(this.value, {{ $params['cost_unit'] }})">
                     {{ $item->unit }}
                     <button href="" class="btn btn-success" id="button_cost">
                         Купить за {{ $params['cost_unit'] }} руб.

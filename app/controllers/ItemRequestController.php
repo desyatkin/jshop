@@ -34,7 +34,7 @@ class ItemRequestController extends \BaseController {
                 case 1:
                     $number = (int)Input::get('number', false);
                     if($number) {
-                        $summ = $number * $item->countParam()->value;
+                        $summ = $number * $item->costParam()->value;
                         if($user->money < $summ) {
                             Flash::error('У вас не достаточно средст для покупки');
                             return Redirect::to('/items/' . $item_id)->with(Input::all());
