@@ -9,7 +9,7 @@ font-family: 'Ubuntu', sans-serif;
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="/" style="color: #fff; font-family: 'Lobster', cursive; font-size: 25pt;">Joint Shop</a>
+      <a class="navbar-brand" href="/" style="color: #fff; font-family: 'Lobster', cursive; font-size: 25pt;">JShop</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
